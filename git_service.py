@@ -1,4 +1,5 @@
 import os
+import shutil
 from datetime import date
 from github import Github
 
@@ -25,8 +26,5 @@ def git_backip():
     clone = "git clone " + repo_clone
     os.chdir(backup_dir)
     os.system(clone)
-
+    shutil.make_archive(backup_dir, "zip", backup_dir)
     print(f'{repository_name} backed up successfully to {backup_dir}.')
-
-
-git_backip()
